@@ -14,7 +14,7 @@ export function MarkdownContent({ source }: { source: string }) {
             return null;
           }
 
-          return <img src={normalizedSrc} alt={alt || ""} {...props} />;
+          return <img src={normalizedSrc} alt={alt || ""} loading="lazy" referrerPolicy="no-referrer" {...props} />;
         },
         code: ({ className, children, ...props }) => (
           <code className={className} {...props}>
