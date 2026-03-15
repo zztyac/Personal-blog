@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
-import { PrismaClient, PostStatus } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { mockPosts, mockTopics } from "@/lib/content/mock-data";
+import type { PostStatus } from "@/lib/types";
 
 const prisma = new PrismaClient();
 
