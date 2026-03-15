@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  displayName  String?
+  posts        Post[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Topic {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  coverImage  String?
+  accentColor String   @default("#00f6ff")
+  isVisible   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  posts       Post[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Post {
+  id              String     @id @default(cuid())
+  title           String
+  slug            String     @unique
+  summary         String
+  coverImage      String?
+  contentMarkdown String     @db.Text
+  contentHtml     String?    @db.Text
+  tocJson         String?    @db.Text
+  status          PostStatus @default(draft)
+  publishedAt     DateTime?
+  readingTime     Int        @default(0)
+  isFeatured      Boolean    @default(false)
+  seoTitle        String?
+  seoDescription  String?
+  canonicalUrl    String?
+  topicId         String
+  authorId        String
+  topic           Topic      @relation(fields: [topicId], references: [id], onDelete: Restrict)
+  author          User       @relation(fields: [authorId], references: [id], onDelete: Restrict)
+  tags            PostTag[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Tag {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  posts     PostTag[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model PostTag {
+  postId String
+  tagId  String
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+}
+
+model MediaAsset {
+  id         String   @id @default(cuid())
+  filename   String
+  mimeType   String
+  url        String
+  size       Int
+  width      Int?
+  height     Int?
+  uploadedAt DateTime @default(now())
+}
+
+model SiteSetting {
+  id              String   @id @default(cuid())
+  siteName        String
+  siteDescription String
+  siteUrl         String
+  heroTitle       String?
+  heroSubtitle    String?
+  socialLinksJson String?  @db.Text
+  analyticsCode   String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+enum PostStatus {
+  draft
+  published
+  archived
+}

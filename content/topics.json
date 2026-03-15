@@ -1,0 +1,15 @@
+[
+  {
+    "name": "新手买币必看：头部交易所 USDT 获取全流程",
+    "slug": "crypto-fiat-onramp",
+    "description": "无论你是想炒币、海淘，还是想为海外虚拟信用卡充值，安全获取 USDT 都是第一步。本专题为你详细拆解了在官方担保平台（欧易、币安）上个人对个人（C2C）购买数字资产的具体步骤。用图文并茂的方式，带你跨越下载门槛，轻松掌握数字货币购买技能，告别资金损失风险。",
+    "accentColor": "#ffe600",
+    "coverImage": ""
+  },
+  {
+    "name": "2026 最新海外虚拟信用卡申请与充值教程",
+    "slug": "virtual-cards",
+    "description": "专注于海外虚拟信用卡（Virtual Credit Card, VCC）的深度评测与申请教学。本专题涵盖各大主流虚拟卡平台的注册流程、KYC 实名认证技巧、加密货币（USDT）充值提现指南，以及虚拟卡在 OpenAI (ChatGPT Plus), PayPal, Apple Pay, Google Pay, 国际应用商店等高频场景下的实际绑定与消费测试。持续更新，为你提供最新、最安全的跨境支付工具箱。",
+    "accentColor": "#00f6ff"
+  }
+]
