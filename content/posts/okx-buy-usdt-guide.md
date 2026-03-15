@@ -14,7 +14,7 @@ tags:
   - C2C交易
   - 法币入金
 publishedAt: '2026-03-15T13:13:13.673Z'
-status: published
+status: draft
 featured: true
 ---
 ## 第一步：下载欧易 (OKX) APP 并安装
